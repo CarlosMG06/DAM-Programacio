@@ -47,11 +47,23 @@ def app_events():
 
 # Fer càlculs (resol aquí l'exercici)
 def app_run():
-    pass
+    global angle
+
+    delta_time = clock.get_time() / 1000.0  # Convertir a segons
+    
+    speed = 50  # píxels per segon
+    angle += speed * delta_time
+
+def posicio_perimetre_cercle(center, radi, angle_graus):
+    angle_radians = math.radians(angle_graus)  # Convertir l'angle a radians
+    x = center[0] + radi * math.cos(angle_radians)    # Coordenada X
+    y = center[1] + radi * math.sin(angle_radians)    # Coordenada Y
+    return x, y
 
 # Dibuixar
 def app_draw():
-    
+    global angle
+
     # Pintar el fons de blanc
     screen.fill(WHITE)
 
@@ -59,7 +71,11 @@ def app_draw():
     utils.draw_grid(pygame, screen, 50)
 
     # Resol aquí l'exercici
-    pass
+    centre = (200,250)
+    radi = 100
+    pos_x, pos_y = posicio_perimetre_cercle(centre,radi,angle)
+    pygame.draw.circle(screen,ORANGE,centre,radi,5)
+    pygame.draw.line(screen,BLACK,centre,(pos_x,pos_y),5)
 
     # Actualitzar el dibuix a la finestra
     pygame.display.update()
