@@ -57,7 +57,18 @@ def app_draw():
     utils.draw_grid(pygame, screen, 50)
 
     # Resol aquí l'exercici
-    pass
+    # Pentàgon
+    coordsPentagon = [(150,100),(200,150),(175,200),(125,200),(100,150)]
+    pygame.draw.polygon(screen,GREEN,coordsPentagon,5)
+    # Hexàgon
+    coordsHexagon = [(300,100),(350,100),(400,150),(350,200),(300,200),(250,150)]
+    pygame.draw.polygon(screen,RED,coordsHexagon)
+    pygame.draw.polygon(screen,GREEN,coordsHexagon,5)
+    # Octàgon
+    coordsOctagon = [(150,300),(200,300),(250,350),(250,400),(200,450),(150,450),(100,400),(100,350)]
+    pygame.draw.polygon(screen,PURPLE,coordsOctagon)
+    # Arc
+    pygame.draw.arc(screen,ORANGE,pygame.Rect(400,250,200,100),math.radians(45),math.radians(180),5)
 
     # Actualitzar el dibuix a la finestra
     pygame.display.update()

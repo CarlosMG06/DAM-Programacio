@@ -57,7 +57,9 @@ def app_draw():
     utils.draw_grid(pygame, screen, 50)
 
     # Resol aquí l'exercici
-    pass
+    for n in range(100,401,50):
+        pygame.draw.line(screen, BLUE, (100, 100), (n, 400), 5)
+        pygame.draw.line(screen, GREEN, (100, 400), (400, n), 5)
 
     # Actualitzar el dibuix a la finestra
     pygame.display.update()
