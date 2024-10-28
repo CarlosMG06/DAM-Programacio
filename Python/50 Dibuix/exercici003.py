@@ -29,6 +29,9 @@ dir_y = "none"
 pox_x = 100
 pox_y = 100
 
+ample = 15
+alt = 15
+
 # Bucle de l'aplicació
 def main():
     is_looping = True
@@ -77,7 +80,7 @@ def app_events():
 
 # Fer càlculs
 def app_run():
-    global dir_x, dir_y, pox_x, pox_y
+    global dir_x, dir_y, pox_x, pox_y, ample, alt
 
     delta_time = clock.get_time() / 1000.0  # Convertir a segons
     
@@ -86,8 +89,8 @@ def app_run():
 
     if (dir_x == "right"):
         pox_x = pox_x + displacement
-        if (pox_x > 200):
-            pox_x = 200
+        if (pox_x > 200 - ample):
+            pox_x = 200 - ample
     elif (dir_x == "left"):
         pox_x = pox_x - displacement
         if (pox_x < 100):
@@ -95,8 +98,8 @@ def app_run():
 
     if (dir_y == "down"):
         pox_y = pox_y + displacement
-        if (pox_y > 200):
-            pox_y = 200
+        if (pox_y > 200 - alt):
+            pox_y = 200 - alt
     elif (dir_y == "up"):
         pox_y = pox_y - displacement
         if (pox_y < 100):
@@ -116,7 +119,7 @@ def app_draw():
     pygame.draw.rect(screen, BLUE, pygame.Rect(100, 100, 100, 100), 2)
 
     # Draw moving object
-    pygame.draw.rect(screen, ORANGE, pygame.Rect(pox_x, pox_y, 15, 15))
+    pygame.draw.rect(screen, ORANGE, pygame.Rect(pox_x, pox_y, ample, alt))
 
     # Actualitzar el dibuix a la finestra
     pygame.display.update()
